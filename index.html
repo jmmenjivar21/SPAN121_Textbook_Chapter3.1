@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish 121 · Capítulo 3 · Mi Vida</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-light: #243561;
+    --terracotta: #c4522a;
+    --terra-light: #e07048;
+    --gold: #d4a537;
+    --gold-light: #f0c45a;
+    --cream: #fdf6ec;
+    --cream-dark: #f4e8d4;
+    --sage: #5a7a5e;
+    --sage-light: #7ba080;
+    --text: #2a1f14;
+    --text-light: #6b5a45;
+    --correct: #2d6e3e;
+    --wrong: #9e2a2a;
+    --correct-bg: #e8f5ec;
+    --wrong-bg: #fde8e8;
+    --tile-shadow: 0 4px 20px rgba(26,39,68,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.35);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header-badge {
+    background: var(--terracotta);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    flex: 1;
+  }
+
+  .header-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── NAV TABS ───────────────────────────── */
+  nav {
+    background: var(--navy-light);
+    border-bottom: 3px solid var(--gold);
+    overflow-x: auto;
+  }
+
+  .nav-inner {
+    display: flex;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  nav button:hover { color: white; }
+  nav button.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold-light);
+  }
+
+  /* ── MAIN ───────────────────────────────── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  section { display: none; }
+  section.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ── WEEK OVERVIEW ──────────────────────── */
+  .week-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #2d4a7a 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .week-hero::before {
+    content: '3.1';
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .week-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .week-hero p {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+  }
+
+  .topic-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Schedule table */
+  .schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--tile-shadow);
+    margin-bottom: 32px;
+  }
+
+  .schedule-table thead {
+    background: var(--navy);
+    color: white;
+  }
+
+  .schedule-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  .schedule-table tbody tr:nth-child(even) { background: var(--cream-dark); }
+  .schedule-table tbody tr:nth-child(odd) { background: white; }
+  .schedule-table tbody tr:hover { background: #efe4d4; transition: background 0.2s; }
+
+  .schedule-table td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+
+  .day-type {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .type-inclass { background: var(--navy); color: white; }
+  .type-self { background: var(--sage); color: white; }
+  .type-practice { background: var(--terracotta); color: white; }
+
+  .day-focus { font-weight: 600; color: var(--navy); }
+  .hw-note { font-style: italic; color: var(--text-light); font-size: 0.85rem; }
+
+  /* ── SECTION TITLES ─────────────────────── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+    border-left: 5px solid var(--terracotta);
+    padding-left: 16px;
+  }
+
+  .section-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-left: 21px;
+  }
+
+  /* ── VOCAB CARDS ────────────────────────── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .vocab-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--tile-shadow);
+    cursor: pointer;
+    perspective: 600px;
+    height: 110px;
+    position: relative;
+  }
+
+  .vocab-card-inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+    border-radius: 10px;
+  }
+
+  .vocab-card.flipped .vocab-card-inner { transform: rotateY(180deg); }
+
+  .vocab-front, .vocab-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .vocab-front {
+    background: white;
+    border: 2px solid var(--cream-dark);
+  }
+
+  .vocab-front .es {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .vocab-front .hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .vocab-back {
+    background: var(--navy);
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .vocab-back .en {
+    font-size: 0.95rem;
+    font-weight: 300;
+  }
+
+  .flip-tip {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── GRAMMAR BOXES ──────────────────────── */
+  .grammar-box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--tile-shadow);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .grammar-header {
+    background: var(--navy);
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .grammar-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--terracotta);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .grammar-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .grammar-body { padding: 24px; }
+  .grammar-body p { margin-bottom: 14px; font-size: 0.95rem; }
+
+  .pronoun-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+
+  .pronoun-table th {
+    background: var(--cream-dark);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .pronoun-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .pronoun-table .sp { font-style: italic; color: var(--navy); font-weight: 600; }
+  .pronoun-table .en { color: var(--text-light); }
+
+  .example-block {
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+
+  .example-block p { margin: 4px 0; font-size: 0.9rem; }
+
+  .example-block .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px !important;
+  }
+
+  .example-block .es { font-style: italic; color: var(--navy); }
+  .example-block .en { color: var(--text-light); font-size: 0.82rem; }
+
+  /* ── EXERCISES ──────────────────────────── */
+  .exercise-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--tile-shadow);
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .exercise-header {
+    background: var(--terracotta);
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .exercise-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+  }
+
+  .exercise-header .ex-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    background: rgba(0,0,0,0.2);
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+
+  .exercise-body { padding: 24px; }
+
+  .exercise-body .instructions {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--cream-dark);
+    padding-bottom: 14px;
+  }
+
+  .exercise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--cream);
+    transition: background 0.2s;
+  }
+
+  .exercise-item.correct { background: var(--correct-bg); }
+  .exercise-item.wrong { background: var(--wrong-bg); }
+
+  .item-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    min-width: 22px;
+    margin-top: 2px;
+  }
+
+  .item-text { flex: 1; }
+  .item-text p { font-size: 0.92rem; margin-bottom: 8px; }
+
+  .fill-sentence {
+    font-size: 0.92rem;
+    line-height: 2.2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .blank-input {
+    background: white;
+    border: none;
+    border-bottom: 2px solid var(--navy);
+    padding: 2px 8px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--navy);
+    min-width: 130px;
+    width: auto;
+    transition: border-color 0.2s;
+  }
+
+  .blank-input:focus { outline: none; border-bottom-color: var(--gold); }
+  .blank-input.correct-input { border-bottom-color: var(--correct); color: var(--correct); }
+  .blank-input.wrong-input { border-bottom-color: var(--wrong); color: var(--wrong); }
+
+  .feedback {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    margin-top: 6px;
+    display: none;
+  }
+
+  .feedback.show { display: block; }
+  .feedback.correct { color: var(--correct); }
+  .feedback.wrong { color: var(--wrong); }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-check { background: var(--navy); color: white; }
+  .btn-check:hover { background: var(--navy-light); transform: translateY(-1px); }
+  .btn-reset { background: var(--cream-dark); color: var(--text); }
+  .btn-reset:hover { background: #e0d0b8; }
+
+  .score-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-left: auto;
+    display: none;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .score-badge.show { display: flex; }
+  .score-badge.good { background: var(--correct-bg); color: var(--correct); }
+  .score-badge.ok { background: #fff3cd; color: #856404; }
+  .score-badge.retry { background: var(--wrong-bg); color: var(--wrong); }
+
+  /* word bank */
+  .word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 14px;
+    background: var(--cream);
+    border-radius: 8px;
+    border: 1px dashed var(--cream-dark);
+  }
+
+  .word-bank-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .word-chip {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--navy);
+  }
+
+  /* ── CONJUGATION TABLE EXERCISE ─────────── */
+  .conj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .conj-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+
+  .conj-pronoun {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    min-width: 90px;
+  }
+
+  .conj-input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid var(--navy);
+    background: transparent;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--navy);
+    padding: 2px 4px;
+  }
+
+  .conj-input:focus { outline: none; border-bottom-color: var(--gold); }
+  .conj-input.correct-input { border-bottom-color: var(--correct); color: var(--correct); }
+  .conj-input.wrong-input { border-bottom-color: var(--wrong); color: var(--wrong); }
+
+  .conj-verb-header {
+    background: var(--navy);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 8px 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .conj-section { margin-bottom: 24px; }
+
+  /* ── CULTURAL NOTE ──────────────────────── */
+  .cultural-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--tile-shadow);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .cultural-header {
+    background: linear-gradient(90deg, var(--sage) 0%, var(--sage-light) 100%);
+    color: white;
+    padding: 16px 24px;
+  }
+
+  .cultural-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+  }
+
+  .cultural-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) { .cultural-body { grid-template-columns: 1fr; } }
+
+  .fact-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .fact-card .fact-icon { font-size: 1.5rem; margin-bottom: 8px; }
+  .fact-card h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .fact-card p { font-size: 0.88rem; }
+
+  /* ── VIDEO LOG ──────────────────────────── */
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--cream);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .checklist-item:hover { background: var(--cream-dark); }
+
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--sage);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .checklist-item label {
+    font-size: 0.92rem;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .checklist-item.done label {
+    text-decoration: line-through;
+    color: var(--text-light);
+  }
+
+  .script-area {
+    width: 100%;
+    border: 2px solid var(--cream-dark);
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.92rem;
+    color: var(--navy);
+    resize: vertical;
+    min-height: 200px;
+    margin-top: 12px;
+    transition: border-color 0.2s;
+    background: white;
+  }
+
+  .script-area:focus { outline: none; border-color: var(--gold); }
+
+  .progress-bar-wrap {
+    background: var(--cream-dark);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin: 6px 0 4px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--sage), var(--sage-light));
+    transition: width 0.5s ease;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 600px) {
+    .header-inner { padding: 12px 16px; gap: 10px; }
+    main { padding: 24px 16px 60px; }
+    .week-hero { padding: 24px 20px; }
+    .week-hero h1 { font-size: 1.5rem; }
+    .grammar-body { padding: 16px; }
+    .exercise-body { padding: 16px; }
+    .conj-grid { grid-template-columns: 1fr; }
+  }
+
+  /* connector chips */
+  .connector-chip {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 2px 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* learning objectives list */
+  .obj-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .obj-item {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    box-shadow: var(--tile-shadow);
+    border-left: 4px solid var(--gold);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .obj-item::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.7rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="header-badge">SPSCC · ESP 121</span>
+    <span class="header-title">Capítulo 3 — Mi Vida</span>
+    <span class="header-subtitle">Semana 6 · Week 6</span>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="active" onclick="showSection('overview')">📋 Overview</button>
+    <button onclick="showSection('vocab')">✈️ Vocabulario</button>
+    <button onclick="showSection('gramatica')">📐 Gramática</button>
+    <button onclick="showSection('ejercicios')">✏️ Ejercicios</button>
+    <button onclick="showSection('cultura')">🌎 Cultura</button>
+
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════ OVERVIEW -->
+<section id="overview" class="active">
+  <div class="week-hero">
+    <h1>Capítulo 3 — Mi Vida</h1>
+    <p>SPSCC · Spanish 121 · Family, leisure, languages, and the start of a new chapter</p>
+    <div class="topic-chips">
+      <span class="chip">la familia</span>
+      <span class="chip">ocio &amp; lenguas</span>
+      <span class="chip">posesivos · mi · tu · su · nuestro</span>
+      <span class="chip">saber vs. conocer</span>
+      <span class="chip">querer + infinitive</span>
+      <span class="chip">video log: aplicación formal</span>
+    </div>
+  </div>
+
+  <!-- Chapter intro card -->
+  <div style="background:linear-gradient(135deg, var(--navy), var(--navy-light));color:white;padding:24px 28px;border-radius:14px;margin-bottom:32px;box-shadow:var(--soft-shadow)">
+    <div style="font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.7;margin-bottom:8px">Capítulo 3 · Empiezo</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px;color:white">Welcome to a New Chapter</h2>
+    <p style="font-size:0.95rem;line-height:1.55;opacity:0.95">In this chapter, you will talk about your <strong>goals and plans</strong>, learn the family and leisure vocabulary you need to describe your life, and end the unit by recording a <strong>Video Log applying to a job, internship, or community program</strong>. Week 6 introduces the family vocabulary, possessive adjectives, and the always-tricky <em>saber</em>/<em>conocer</em> distinction.</p>
+  </div>
+
+  <!-- Learning Objectives -->
+  <h2 class="section-title">Learning Objectives — Capítulo 3</h2>
+  <p class="section-meta">By the end of this chapter you will be able to:</p>
+  <div class="obj-list">
+    <div class="obj-item"><span>Talk about future plans using <em>querer</em> + infinitive</span></div>
+    <div class="obj-item"><span>Conjugate stem-changing verbs <em>e &rarr; ie</em>: <em>querer, entender, preferir, empezar</em></span></div>
+    <div class="obj-item"><span>Use irregular yo forms: <em>hago, sé, conozco, pongo, salgo, traigo</em></span></div>
+    <div class="obj-item"><span>Differentiate <em>saber</em> and <em>conocer</em> and use each correctly</span></div>
+    <div class="obj-item"><span>Use <em>porque, para</em>, and <em>por</em> with the correct meaning</span></div>
+    <div class="obj-item"><span>Apply possessive adjectives correctly in context</span></div>
+    <div class="obj-item"><span>Name family members, languages, and leisure activities</span></div>
+    <div class="obj-item"><span>Write a 150–180 word formal email applying to a job, internship, or community program</span></div>
+  </div>
+
+  <p style="font-size:0.85rem;color:var(--text-light);font-style:italic;margin-bottom:24px">📍 This page covers <strong>Week 6 (Semana 6)</strong> — the first week of Capítulo 3. Stem-changing verbs, irregular <em>yo</em> forms, <em>querer + infinitivo</em>, and <em>por/para/porque</em> are introduced in subsequent weeks.</p>
+
+  <!-- Weekly Schedule -->
+  <h2 class="section-title">Weekly Schedule</h2>
+  <p class="section-meta">4 days · 4 focuses · Semana 6</p>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Type</th>
+        <th>Focus</th>
+        <th>Activities</th>
+        <th>Homework</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Weekend</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Fin de semana</small></td>
+        <td><span class="day-type type-self">Self-Guided</span></td>
+        <td class="day-focus">Vocab 1–2: Family + Leisure/Languages</td>
+        <td>Study Vocabulario 1 (family) and Vocabulario 2 (leisure/languages); complete Ejercicio 1 (family relationships); vocabulary flashcards</td>
+        <td class="hw-note">Ejercicio 1 due Monday; learn all family + language vocabulary</td>
+      </tr>
+      <tr>
+        <td><strong>Monday</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Lunes</small></td>
+        <td><span class="day-type type-inclass">In-Class</span></td>
+        <td class="day-focus">Midterm Q&amp;A + Possessive Adjectives</td>
+        <td>Grammar 4 instruction (possessives); family-tree partner activity; Ejercicio 2 (possessives fill-in)</td>
+        <td class="hw-note">Write 6 sentences about your own family using possessives</td>
+      </tr>
+      <tr>
+        <td><strong>Tuesday</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Martes</small></td>
+        <td><span class="day-type type-practice">Practice</span></td>
+        <td class="day-focus">saber vs. conocer</td>
+        <td>Grammar 3 instruction; Ejercicio 3 (saber/conocer); <em>"Do you know…?"</em> class survey in Spanish</td>
+        <td class="hw-note">Finish Ejercicio 3; write 4 sentences — 2 with <em>saber</em>, 2 with <em>conocer</em></td>
+      </tr>
+      <tr>
+        <td><strong>Wednesday</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Miércoles</small></td>
+        <td><span class="day-type type-inclass">In-Class</span></td>
+        <td class="day-focus">Vocab Quiz 5 + Class Survey</td>
+        <td>Vocabulario Quiz 5 (family + leisure); begin class interview task; oral Q&amp;A practice pairs</td>
+        <td class="hw-note">Complete interview notes; draft 3 survey-summary sentences</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Monday class plan -->
+  <h2 class="section-title">Monday In-Class Plan</h2>
+  <p class="section-meta">Lunes · En clase · 50 minutes</p>
+
+  <div style="display:grid;gap:12px;margin-bottom:32px;">
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--gold)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--gold);min-width:70px">0:00–0:05</div>
+      <div class="item-text"><strong>Warm-Up:</strong> Family vocabulary choral review. Instructor says English term; students call out Spanish. Then reverse direction.</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--terracotta)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--terracotta);min-width:70px">0:05–0:20</div>
+      <div class="item-text"><strong>Grammar Instruction (Possessives):</strong> <em>mi/tu/su/nuestro</em> paradigm on the board. Contrast: <em>mi clase</em> (one item) vs. <em>mis clases</em> (plural). Students write 4 sentences about their own family. <em>Plus:</em> midterm questions and answers.</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--navy)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--navy);min-width:70px">0:20–0:40</div>
+      <div class="item-text"><strong>Family Tree Partner Activity:</strong> Draw a simple family tree (real or invented, 5–6 members). Present to your partner using possessives — <em>"Mi madre se llama ___. Su hermano es mi tío. Nuestros abuelos viven en ___."</em></div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--sage)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--sage);min-width:70px">0:40–0:50</div>
+      <div class="item-text"><strong>Report Back:</strong> Introduce your partner's family to a second pair. The listening pair writes down 3 family members they heard.</div>
+    </div>
+  </div>
+
+  <!-- Wednesday plan -->
+  <h2 class="section-title">Wednesday In-Class Plan</h2>
+  <p class="section-meta">Miércoles · En clase · 50 minutes</p>
+
+  <div style="display:grid;gap:12px;margin-bottom:32px;">
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--terracotta)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--terracotta);min-width:70px">0:00–0:10</div>
+      <div class="item-text"><strong>Vocabulario Quiz 5:</strong> Family vocabulary + leisure activities/languages (fill-in + matching, 12 items).</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--navy)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--navy);min-width:70px">0:10–0:35</div>
+      <div class="item-text"><strong>Class Interview Task:</strong> Interview 3 classmates using Cap. 3 questions — <em>¿Qué quieres hacer este semestre? / ¿Prefieres trabajar solo/a o en grupo? / ¿Qué actividades te gustan? / ¿Por qué estudias español?</em> Record notes in Spanish.</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--sage)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--sage);min-width:70px">0:35–0:45</div>
+      <div class="item-text"><strong>Oral Q&amp;A Pairs:</strong> Practice with a new partner. Focus on <em>saber</em> vs. <em>conocer</em> — <em>"¿Sabes hablar otro idioma? ¿Conoces a alguien bilingüe?"</em></div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--gold)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--gold);min-width:70px">0:45–0:50</div>
+      <div class="item-text"><strong>Wrap-Up:</strong> Each student shares one interesting thing from their interviews. Class votes on the most common reason for studying Spanish.</div>
+    </div>
+  </div>
+
+  <!-- Online Resources -->
+  <h2 class="section-title">Online Resources</h2>
+  <p class="section-meta">Semana 6 · Outside Materials</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:16px">
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Weekend · Self-Guided</div>
+      <p style="font-size:0.88rem;font-weight:600;margin-bottom:8px">La familia + Ocio y lenguas</p>
+      <a href="https://www.youtube.com/watch?v=fuq7-Qp91Ic" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Spanish Family Vocabulary</a>
+      <a href="https://latinele.com/family-vocabulary-in-spanish/" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none">📝 Practice: Family Vocabulary &amp; Quiz (LatinElE)</a>
+    </div>
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Monday</div>
+      <p style="font-size:0.88rem;font-weight:600;margin-bottom:8px">Adjetivos posesivos</p>
+      <a href="https://www.youtube.com/watch?v=q-qLrI_Uc44" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Possessive Adjectives in Spanish</a>
+      <a href="https://studyspanish.com/grammar/test/possadj" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none">📝 Practice: Possessive Adjectives (StudySpanish)</a>
+    </div>
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Tuesday · Practice</div>
+      <p style="font-size:0.88rem;font-weight:600;margin-bottom:8px">Saber vs. Conocer</p>
+      <a href="https://www.youtube.com/watch?v=MIjHG0XwZUs" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Saber vs. Conocer (Butterfly Spanish)</a>
+      <a href="https://studyspanish.com/grammar/test/sabcon" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none">📝 Practice: Saber/Conocer Fill-in</a>
+    </div>
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Wednesday</div>
+      <p style="font-size:0.88rem;font-weight:600;margin-bottom:8px">Vocab Quiz 5 + Class Survey</p>
+      <a href="https://www.youtube.com/@spanishpod101/search?query=leisure+activities+hobbies+Spanish" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Leisure Activities (SpanishPod101)</a>
+      <a href="https://quizlet.com/1168747892/spanish-hobbies-and-leisure-activities-vocabulary-for-beginners-flash-cards/" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none">📝 Practice: Leisure Vocabulary (Quizlet)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ VOCABULARIO -->
+<section id="vocab">
+  <!--
+    VOCABULARY CARDS are generated by JS from the arrays at the bottom.
+    Edit {{VOCAB_1_*}} and {{VOCAB_2_*}} in the <script> block
+    (search for `const vocab1` and `const vocab2`).
+  -->
+  <h2 class="section-title">Vocabulario 1 — La Familia</h2>
+  <p class="section-meta">12 cards · core family relationships · Click cards to reveal translation</p>
+  <p class="flip-tip">👨‍👩‍👧 Click any card to flip it and see the translation</p>
+
+  <div class="vocab-grid" id="vocab1Cards"></div>
+
+  <h2 class="section-title">Vocabulario 2 — Ocio y Lenguas</h2>
+  <p class="section-meta">19 cards · 10 leisure activities + 9 languages</p>
+  <p class="flip-tip">🌎 Click any card to flip it</p>
+
+  <div class="vocab-grid" id="vocab2Cards"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ GRAMÁTICA -->
+<section id="gramatica">
+  <h2 class="section-title">Gramática — Grammar Notes</h2>
+  <p class="section-meta">Week 6 · Two key structures: possessives and <em>saber</em> vs. <em>conocer</em></p>
+
+  <!-- GRAMMAR BOX 1 — Possessive Adjectives -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon">G1</div>
+      <div>
+        <h3>Adjetivos Posesivos · Possessive Adjectives</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">mi · tu · su · nuestro &mdash; agree with the noun's number (and gender for nuestro)</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p>Possessive adjectives in Spanish agree with the <strong>thing possessed</strong>, not with the owner. They come before the noun and match it in number — and for <em>nuestro</em>, also in gender.</p>
+
+      <table class="pronoun-table">
+        <thead>
+          <tr>
+            <th>Singular</th>
+            <th>Plural</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sp"><strong>mi</strong> <span class="en">(my)</span></td>
+            <td class="sp"><strong>mis</strong> <span class="en">(my)</span></td>
+            <td class="sp"><em>mi clase / mis clases</em></td>
+          </tr>
+          <tr>
+            <td class="sp"><strong>tu</strong> <span class="en">(your, informal)</span></td>
+            <td class="sp"><strong>tus</strong> <span class="en">(your)</span></td>
+            <td class="sp"><em>tu libro / tus libros</em></td>
+          </tr>
+          <tr>
+            <td class="sp"><strong>su</strong> <span class="en">(his/her/your-formal)</span></td>
+            <td class="sp"><strong>sus</strong> <span class="en">(his/her/your)</span></td>
+            <td class="sp"><em>su familia / sus hermanos</em></td>
+          </tr>
+          <tr>
+            <td class="sp"><strong>nuestro/a</strong> <span class="en">(our)</span></td>
+            <td class="sp"><strong>nuestros/as</strong> <span class="en">(our)</span></td>
+            <td class="sp"><em>nuestro profesor / nuestras notas</em></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Key pattern:</strong> agreement is with the <em>noun</em>, not the speaker. <em>Mis hermanos</em> = "my brothers" (plural noun → plural possessive), regardless of how many speakers.</p>
+
+      <!-- Pitfall callout: mi/tu carry no accent as possessives -->
+      <div class="example-block" style="background:#fdf3f1;border-left:4px solid var(--wrong);margin-top:14px">
+        <p class="label" style="color:var(--wrong)">⚠ Pitfall · Cuidado</p>
+        <p class="es"><strong>mi</strong> and <strong>tu</strong> as possessives carry <strong>no accent mark</strong>.</p>
+        <p class="es">The accented forms <em>mí</em> (me) and <em>tú</em> (you) are <strong>pronouns</strong> — different word, different role.</p>
+        <p class="es" style="margin-top:6px"><em>mi familia</em> = my family · <em>para mí</em> = for me</p>
+        <p class="es"><em>tu hermano</em> = your brother · <em>tú eres simpático</em> = you are nice</p>
+      </div>
+
+      <div class="example-block">
+        <p class="label">Examples · Ejemplos</p>
+        <p class="es">Mi madre se llama Ana. <span class="en">→ My mother's name is Ana.</span></p>
+        <p class="es">Sus abuelos viven en Quito. <span class="en">→ His/her/their grandparents live in Quito.</span></p>
+        <p class="es">Nuestra clase de español es difícil. <span class="en">→ Our Spanish class is hard.</span></p>
+        <p class="es">¿Dónde están <em>tus</em> primos? <span class="en">→ Where are your cousins?</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR BOX 2 — Saber vs. Conocer -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon">G2</div>
+      <div>
+        <h3>Saber vs. Conocer · Two Verbs for "To Know"</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">SABER &mdash; facts, information, how to · CONOCER &mdash; people, places, familiarity</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p>Spanish has two verbs that both translate as "to know" in English. Choosing between them depends on <strong>what kind of knowledge</strong> you have. Both are irregular only in the <em>yo</em> form.</p>
+
+      <!-- Side-by-side conjugation table -->
+      <table class="pronoun-table">
+        <thead>
+          <tr>
+            <th>Pronoun</th>
+            <th><strong>SABER</strong> <span style="opacity:0.7;font-weight:normal">facts / how to</span></th>
+            <th><strong>CONOCER</strong> <span style="opacity:0.7;font-weight:normal">people / places</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="connector-chip">yo</span></td>
+            <td class="sp"><strong>sé</strong> <span style="font-size:0.75rem;color:var(--text-light)">(irregular)</span></td>
+            <td class="sp"><strong>conozco</strong> <span style="font-size:0.75rem;color:var(--text-light)">(irregular)</span></td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">tú</span></td>
+            <td class="sp">sabes</td>
+            <td class="sp">conoces</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">él/ella/Ud.</span></td>
+            <td class="sp">sabe</td>
+            <td class="sp">conoce</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">nosotros</span></td>
+            <td class="sp">sabemos</td>
+            <td class="sp">conocemos</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">ellos/Uds.</span></td>
+            <td class="sp">saben</td>
+            <td class="sp">conocen</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Usage rules -->
+      <div class="example-block" style="margin-top:14px">
+        <p class="label">When to use SABER · Cuándo usar SABER</p>
+        <p class="es"><strong>SABER + infinitivo</strong> = to know how to (do something)</p>
+        <p class="es" style="padding-left:14px;color:var(--text-light)">¿<em>Sabes</em> cocinar? <span class="en">→ Do you know how to cook?</span></p>
+        <p class="es"><strong>SABER + información / hecho</strong> = to know a fact</p>
+        <p class="es" style="padding-left:14px;color:var(--text-light)"><em>Sé</em> dónde está la biblioteca. <span class="en">→ I know where the library is.</span></p>
+      </div>
+
+      <div class="example-block">
+        <p class="label">When to use CONOCER · Cuándo usar CONOCER</p>
+        <p class="es"><strong>CONOCER + persona</strong> = to know (be acquainted with) a person</p>
+        <p class="es" style="padding-left:14px;color:var(--text-light)"><em>Conozco</em> <strong>a</strong> tu profesor. <span class="en">→ I know your professor.</span></p>
+        <p class="es"><strong>CONOCER + lugar</strong> = to be familiar with a place</p>
+        <p class="es" style="padding-left:14px;color:var(--text-light)">¿<em>Conoces</em> Buenos Aires? <span class="en">→ Are you familiar with Buenos Aires?</span></p>
+      </div>
+
+      <!-- Personal a callout -->
+      <div class="example-block" style="background:#fdf3f1;border-left:4px solid var(--wrong);margin-top:14px">
+        <p class="label" style="color:var(--wrong)">⚠ The Personal "a" · La <em>a</em> personal</p>
+        <p class="es">When <strong>conocer</strong> takes a person as its direct object, you must add the personal <strong>a</strong> right before the person.</p>
+        <p class="es" style="margin-top:6px">✓ <em>Conozco <strong>a</strong> María.</em> &mdash; I know María.</p>
+        <p class="es">✗ <em>Conozco María.</em> (incorrect)</p>
+        <p class="es" style="margin-top:6px">No personal <em>a</em> with places: <em>Conozco Bogotá.</em> ✓</p>
+      </div>
+
+      <!-- Quick decision tree -->
+      <div class="example-block">
+        <p class="label">Quick Decision · ¿Saber o Conocer?</p>
+        <p class="es"><strong>A fact?</strong> &rarr; <em>saber</em> &nbsp;·&nbsp; <strong>How to do something?</strong> &rarr; <em>saber</em></p>
+        <p class="es"><strong>A person?</strong> &rarr; <em>conocer</em> + <strong>a</strong> &nbsp;·&nbsp; <strong>A place?</strong> &rarr; <em>conocer</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ EJERCICIOS -->
+<section id="ejercicios">
+  <h2 class="section-title">Ejercicios — Practice Exercises</h2>
+  <p class="section-meta">3 exercises · Interactive · Type your answers and click Check</p>
+
+  <!-- EJERCICIO 1 — Family relationships -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio 1 — La Familia · Fill in the Relationship</h3>
+      <span class="ex-num">EJ. 1</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Complete each sentence with the correct family member. The hint chip shows the expected gender/number. / Completa con el miembro de la familia correcto.</p>
+      <div id="ej1"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEj1()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEj1()">Reset</button>
+        <span class="score-badge" id="score1"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO 2 — Possessive adjectives -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio 2 — Posesivos · Fill in the Correct Possessive</h3>
+      <span class="ex-num">EJ. 2</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Use context to choose the right possessive. Make it agree with the noun (singular/plural; for <em>nuestro</em> also gender). The hint chip shows whose item it is. / Elige el posesivo correcto y hazlo concordar.</p>
+      <div class="word-bank">
+        <span class="word-bank-label">Posesivos disponibles</span>
+        <span class="word-chip">mi · mis</span>
+        <span class="word-chip">tu · tus</span>
+        <span class="word-chip">su · sus</span>
+        <span class="word-chip">nuestro/a · nuestros/as</span>
+      </div>
+      <div id="ej2"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEj2()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEj2()">Reset</button>
+        <span class="score-badge" id="score2"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO 3 — saber vs. conocer -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio 3 — Saber o Conocer · Choose &amp; Conjugate</h3>
+      <span class="ex-num">EJ. 3</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Fill in with the correct form of <em>saber</em> or <em>conocer</em>. The hint chip shows the pronoun — you decide which verb fits the meaning. / Completa con la forma correcta de <em>saber</em> o <em>conocer</em>.</p>
+      <div id="ej3"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEj3()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEj3()">Reset</button>
+        <span class="score-badge" id="score3"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ CULTURA -->
+<section id="cultura">
+  <h2 class="section-title">Cultura — Family &amp; Languages in the Spanish-Speaking World</h2>
+  <p class="section-meta">How family structures and multilingualism shape daily life across Spain and Latin America</p>
+
+  <div class="cultural-card">
+    <div class="cultural-header">
+      <h3>👨‍👩‍👧‍👦 La Familia · Family Structures &amp; Roles</h3>
+    </div>
+    <div class="cultural-body">
+      <div class="fact-card">
+        <div class="fact-icon">🏠</div>
+        <h4>Multi-generational households</h4>
+        <p>In many Spanish-speaking countries it's still common for adult children to live with their parents until marriage — and for grandparents (<em>los abuelos</em>) to live in the same home or nearby. This isn't seen as unusual or as a sign of dependence — it's a default, often economically practical and culturally valued.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🎉</div>
+        <h4>Sunday family lunch</h4>
+        <p>The big <em>almuerzo dominical</em> (Sunday lunch) is a cornerstone tradition across Latin America and Spain. Cousins (<em>primos</em>), aunts and uncles (<em>tíos/tías</em>) and grandparents gather weekly. Missing it without good reason is sometimes treated as a small social transgression.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">👪</div>
+        <h4>Compound family terms</h4>
+        <p>Spanish uses the masculine plural to cover mixed groups: <em>los padres</em> = parents (mom + dad), <em>los hermanos</em> = siblings (brothers + sisters), <em>los tíos</em> = aunts &amp; uncles, <em>los abuelos</em> = grandparents. There's no separate word for "siblings" — context disambiguates.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">💍</div>
+        <h4>Two surnames</h4>
+        <p>In most Spanish-speaking countries, people carry <strong>two surnames</strong>: father's first, then mother's. <em>Gabriel García Márquez</em> = García (father) + Márquez (mother). Women don't typically take a husband's name on marriage — your full name stays the same throughout life.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cultural-card" style="margin-top:24px">
+    <div class="cultural-header">
+      <h3>🗺 Lenguas · The Linguistic Landscape</h3>
+    </div>
+    <div class="cultural-body">
+      <div class="fact-card">
+        <div class="fact-icon">🇪🇸</div>
+        <h4>Spain: four co-official languages</h4>
+        <p>Spanish (<em>castellano</em>) is the national language, but Catalan (<em>català</em>), Galician (<em>galego</em>), and Basque (<em>euskera</em>) are co-official in their respective regions. A child in Barcelona grows up bilingual in Catalan and Spanish from birth — both are everyday languages, not "second languages."</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🇵🇪</div>
+        <h4>Indigenous languages still alive</h4>
+        <p>Latin America is home to hundreds of indigenous languages still in daily use. <strong>Quechua</strong> (Peru, Bolivia, Ecuador) has ~8 million speakers; <strong>Guaraní</strong> is co-official with Spanish in Paraguay; <strong>Náhuatl</strong> is spoken across central Mexico by ~1.5 million people.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🌎</div>
+        <h4>The Spanish you'll hear varies</h4>
+        <p>Spanish has notable regional flavors. Argentinian Spanish replaces <em>tú</em> with <em>vos</em> (<em>vos sos</em> instead of <em>tú eres</em>). Caribbean Spanish drops final <em>s</em> sounds. Spaniards use <em>vosotros</em> for "you all" while Latin Americans use <em>ustedes</em>. All mutually intelligible — like American/British/Australian English.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🎵</div>
+        <h4>Multilingual artists</h4>
+        <p>Many Latin artists move fluidly between languages. Shakira sings in Spanish, English, Portuguese, and Arabic. Bad Bunny code-switches Spanish/English in the same line. Multilingualism is normal in Spanish-speaking pop culture, not a special skill.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oral practice prompts using Cap. 3 vocab -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon" style="background:var(--sage)">💬</div>
+      <div>
+        <h3>Práctica Oral · Talk About Your Family &amp; Languages</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">Sentence frames using Capítulo 3 vocabulary &amp; grammar</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p>Use these structures with a partner. Take turns asking and answering — practice making the possessives agree and choosing between <em>saber</em> and <em>conocer</em>.</p>
+      <div class="example-block">
+        <p class="label">Sentence Frames · Estructuras</p>
+        <p class="es">Mi familia es de _____. Tengo _____ hermanos/as.</p>
+        <p class="es">Mis abuelos viven en _____. Su casa es grande/pequeña.</p>
+        <p class="es">¿Cuántos primos tienes? &mdash; Tengo _____ primos.</p>
+        <p class="es">¿Sabes hablar otro idioma? &mdash; Sé hablar un poco de _____.</p>
+        <p class="es">¿Conoces a alguien que habla _____ ? &mdash; Sí, conozco a _____.</p>
+        <p class="es">En mi tiempo libre me gusta _____ y _____.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<script>
+// ── NAVIGATION ─────────────────────────────────────
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── UTILITY ────────────────────────────────────────
+function normalize(s) {
+  return (s || '').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function showScore(id, correct, total) {
+  const el = document.getElementById(id);
+  el.textContent = `${correct} / ${total}`;
+  const pct = correct / total;
+  el.className = 'score-badge show ' + (pct >= 0.85 ? 'good' : pct >= 0.6 ? 'ok' : 'retry');
+}
+
+// ── VOCABULARY DECKS ───────────────────────────────
+
+// Vocab 1 — La familia (12 cards)
+const vocab1 = [
+  ['el padre / la madre',   'father / mother'],
+  ['los padres',             'parents'],
+  ['el hermano / la hermana', 'brother / sister'],
+  ['los hermanos',           'siblings'],
+  ['el abuelo / la abuela',  'grandfather / grandmother'],
+  ['los abuelos',            'grandparents'],
+  ['el tío / la tía',        'uncle / aunt'],
+  ['el primo / la prima',    'cousin (m/f)'],
+  ['el sobrino / la sobrina', 'nephew / niece'],
+  ['el hijo / la hija',      'son / daughter'],
+  ['el esposo / la esposa',  'husband / wife'],
+  ['el novio / la novia',    'boyfriend / girlfriend'],
+];
+
+// Vocab 2 — Ocio y lenguas (10 leisure + 9 languages = 19 cards)
+const vocab2 = [
+  // Leisure activities
+  ['escuchar música',        'to listen to music'],
+  ['ver películas / series', 'to watch movies / shows'],
+  ['leer novelas',            'to read novels'],
+  ['bailar',                  'to dance'],
+  ['cocinar',                 'to cook'],
+  ['viajar',                  'to travel'],
+  ['hacer deporte',           'to play sports'],
+  ['jugar videojuegos',       'to play video games'],
+  ['salir con amigos',        'to go out with friends'],
+  ['tocar un instrumento',    'to play an instrument'],
+  // Languages
+  ['el español',              'Spanish'],
+  ['el inglés',               'English'],
+  ['el francés',              'French'],
+  ['el portugués',            'Portuguese'],
+  ['el chino',                'Chinese'],
+  ['el árabe',                'Arabic'],
+  ['el alemán',               'German'],
+  ['el italiano',              'Italian'],
+  ['el japonés',              'Japanese'],
+];
+
+// Build flip-cards
+function buildCards(deck, containerId) {
+  const container = document.getElementById(containerId);
+  deck.forEach(([term, translation]) => {
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div class="vocab-inner">
+        <div class="vocab-front">${term}</div>
+        <div class="vocab-back">${translation}</div>
+      </div>`;
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    container.appendChild(card);
+  });
+}
+buildCards(vocab1, 'vocab1Cards');
+buildCards(vocab2, 'vocab2Cards');
+
+// ── GENERIC FILL-IN-WITH-HINT BUILDER ──────────────
+// Each item: { before, verb (hint chip), after, accepted: [...] }
+function buildFillExercise(data, key, containerId) {
+  const container = document.getElementById(containerId);
+  data.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    const hintChip = item.verb
+      ? `<span style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-light);background:var(--cream-dark);padding:2px 6px;border-radius:3px">${item.verb}</span>`
+      : '';
+    div.innerHTML = `
+      <span class="item-num">${i+1}.</span>
+      <div class="item-text">
+        <div class="fill-sentence">
+          ${item.before ? `<span>${item.before}</span>` : ''}
+          ${hintChip}
+          <input class="blank-input" id="e${key}_${i}" type="text" placeholder="___" autocomplete="off" spellcheck="false">
+          ${item.after ? `<span>${item.after}</span>` : ''}
+        </div>
+        <div class="feedback" id="fb${key}_${i}"></div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+function checkFillExercise(data, key, scoreId, containerId) {
+  let correct = 0;
+  data.forEach((item, i) => {
+    const inp = document.getElementById(`e${key}_${i}`);
+    const fb = document.getElementById(`fb${key}_${i}`);
+    const ok = item.accepted.some(a => normalize(a) === normalize(inp.value));
+    inp.className = 'blank-input ' + (ok ? 'correct-input' : 'wrong-input');
+    document.querySelectorAll(`#${containerId} .exercise-item`)[i].className = 'exercise-item ' + (ok ? 'correct' : 'wrong');
+    fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? '✓ ¡Correcto!' : `✗ Answer: ${item.accepted[0]}`;
+    if (ok) correct++;
+  });
+  showScore(scoreId, correct, data.length);
+}
+
+function resetFillExercise(data, key, scoreId, containerId) {
+  data.forEach((_, i) => {
+    const inp = document.getElementById(`e${key}_${i}`);
+    inp.value = ''; inp.className = 'blank-input';
+    document.getElementById(`fb${key}_${i}`).className = 'feedback';
+    document.querySelectorAll(`#${containerId} .exercise-item`)[i].className = 'exercise-item';
+  });
+  document.getElementById(scoreId).className = 'score-badge';
+}
+
+// ── EJERCICIO 1 — La Familia ───────────────────────
+// Hint chip shows expected gender/number marker
+const ej1Data = [
+  { before: 'La madre de mi madre es mi',                                   verb: '(f. sg.)',   after: '.',  accepted: ['abuela'] },
+  { before: 'El hijo de mi tía es mi',                                       verb: '(m. sg.)',   after: '.',  accepted: ['primo'] },
+  { before: 'La hija de mis padres (pero no yo) es mi',                      verb: '(f. sg.)',   after: '.',  accepted: ['hermana'] },
+  { before: 'El hermano de mi padre es mi',                                  verb: '(m. sg.)',   after: '.',  accepted: ['tío'] },
+  { before: 'Los padres de mis padres son mis',                              verb: '(m. pl.)',   after: '.',  accepted: ['abuelos'] },
+  { before: 'La hija de mi hermano es mi',                                   verb: '(f. sg.)',   after: '.',  accepted: ['sobrina'] },
+  { before: 'El hombre con quien estoy en una relación sería mi',             verb: '(m. sg.)',   after: '.',  accepted: ['novio'] },
+  { before: 'Los hijos de mis abuelos, que no son mis padres, son mis',       verb: '(m. pl.)',   after: '.',  accepted: ['tíos'] },
+];
+buildFillExercise(ej1Data, '1', 'ej1');
+function checkEj1() { checkFillExercise(ej1Data, '1', 'score1', 'ej1'); }
+function resetEj1() { resetFillExercise(ej1Data, '1', 'score1', 'ej1'); }
+
+// ── EJERCICIO 2 — Posesivos ────────────────────────
+// Hint chip shows whose item it is (the owner pronoun/group)
+const ej2Data = [
+  { before: 'Yo tengo dos hermanos.',                       verb: '(yo)',         after: 'hermanos se llaman Marco y Sebastián.',  accepted: ['mis'] },
+  { before: 'Tú tienes una profesora nueva. ¿Cómo es',       verb: '(tú)',         after: 'profesora?',                              accepted: ['tu'] },
+  { before: 'Ella vive con sus padres.',                     verb: '(ella)',       after: 'familia es de Guadalajara.',              accepted: ['su'] },
+  { before: 'Nosotros estudiamos juntos.',                   verb: '(nosotros, f.)', after: 'clases son muy difíciles.',                accepted: ['nuestras'] },
+  { before: '¿Ustedes tienen examen hoy?',                   verb: '(ustedes)',    after: 'examen es de gramática, ¿no?',            accepted: ['su'] },
+  { before: 'Ellos hablan tres idiomas.',                    verb: '(ellos)',      after: 'lengua materna es el español.',           accepted: ['su'] },
+  { before: 'Tú tienes muchos primos. ¿Dónde viven',         verb: '(tú)',         after: 'primos?',                                  accepted: ['tus'] },
+  { before: 'Yo tengo una bicicleta nueva.',                 verb: '(yo)',         after: 'bicicleta es verde y azul.',               accepted: ['mi'] },
+];
+buildFillExercise(ej2Data, '2', 'ej2');
+function checkEj2() { checkFillExercise(ej2Data, '2', 'score2', 'ej2'); }
+function resetEj2() { resetFillExercise(ej2Data, '2', 'score2', 'ej2'); }
+
+// ── EJERCICIO 3 — Saber o Conocer ──────────────────
+// Hint chip shows the pronoun. Student decides which verb to use AND conjugates.
+const ej3Data = [
+  { before: '¿',                            verb: 'saber/conocer (tú)',     after: 'hablar chino?',                          accepted: ['sabes'] },
+  { before: 'Yo no',                        verb: 'saber/conocer (yo)',     after: 'a tu compañero/a de trabajo.',            accepted: ['conozco'] },
+  { before: '¿',                            verb: 'saber/conocer (tú)',     after: 'dónde está el restaurante colombiano?',  accepted: ['sabes'] },
+  { before: 'Ella',                         verb: 'saber/conocer (ella)',   after: 'muy bien la Ciudad de México.',           accepted: ['conoce'] },
+  { before: 'Nosotros',                     verb: 'saber/conocer (nos.)',   after: 'que el examen es el jueves.',             accepted: ['sabemos'] },
+  { before: '¿',                            verb: 'saber/conocer (Uds.)',   after: 'al nuevo director del programa?',         accepted: ['conocen'] },
+  { before: 'Yo',                           verb: 'saber/conocer (yo)',     after: 'bailar salsa pero no muy bien.',          accepted: ['sé', 'se'] },
+  { before: 'Ustedes no',                   verb: 'saber/conocer (Uds.)',   after: 'la obra de Neruda, ¿verdad?',             accepted: ['conocen'] },
+];
+buildFillExercise(ej3Data, '3', 'ej3');
+function checkEj3() { checkFillExercise(ej3Data, '3', 'score3', 'ej3'); }
+function resetEj3() { resetFillExercise(ej3Data, '3', 'score3', 'ej3'); }
+
+</script>
+
+</body>
+</html>
